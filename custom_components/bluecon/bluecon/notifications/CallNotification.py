@@ -1,5 +1,4 @@
-from bluecon.notifications.INotification import INotification
-
+from .INotification import INotification
 
 @INotification.register
 class CallNotification(INotification):

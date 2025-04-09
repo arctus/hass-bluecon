@@ -1,5 +1,4 @@
-from bluecon.model.AccessDoor import AccessDoor
-
+from .AccessDoor import AccessDoor
 
 class Pairing:
     def __init__(self, pairingResponseDictionary: dict):

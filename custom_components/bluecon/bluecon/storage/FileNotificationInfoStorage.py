@@ -1,5 +1,5 @@
 from typing import Any
-from bluecon.storage.INotificationInfoStorage import INotificationInfoStorage
+from .INotificationInfoStorage import INotificationInfoStorage
 import json
 
 class FileNotificationInfoStorage(INotificationInfoStorage):

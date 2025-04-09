@@ -1,7 +1,6 @@
-from bluecon.notifications.CallEndNotification import CallEndNotification
-from bluecon.notifications.CallNotification import CallNotification
-from bluecon.notifications.INotification import INotification
-
+from .CallEndNotification import CallEndNotification
+from .CallNotification import CallNotification
+from .INotification import INotification
 
 class NotificationBuilder:
     @classmethod

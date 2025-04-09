@@ -6,19 +6,19 @@ import hashlib
 from typing import Callable, List
 from threading import Thread
 
-from bluecon.model.AccessDoor import AccessDoor
-from bluecon.model.Pairing import Pairing
-from bluecon.model.User import User
-from bluecon.model.CallLog import CallLog
-from bluecon.model.DeviceInfo import DeviceInfo
-from bluecon.notifications.INotification import INotification
-from bluecon.notifications.NotificationBuilder import NotificationBuilder
-from bluecon.oauth.OAuthService import OAuthService
-from bluecon.oauth.OAuthToken import OAuthToken
-from bluecon.storage.IOAuthTokenStorage import IOAuthTokenStorage
-from bluecon.storage.InMemoryOAuthTokenStorage import InMemoryOAuthTokenStorage
-from bluecon.storage.INotificationInfoStorage import INotificationInfoStorage
-from bluecon.storage.FileNotificationInfoStorage import FileNotificationInfoStorage
+from .model.AccessDoor import AccessDoor
+from .model.Pairing import Pairing
+from .model.User import User
+from .model.CallLog import CallLog
+from .model.DeviceInfo import DeviceInfo
+from .notifications.INotification import INotification
+from .notifications.NotificationBuilder import NotificationBuilder
+from .oauth.OAuthService import OAuthService
+from .oauth.OAuthToken import OAuthToken
+from .storage.IOAuthTokenStorage import IOAuthTokenStorage
+from .storage.InMemoryOAuthTokenStorage import InMemoryOAuthTokenStorage
+from .storage.INotificationInfoStorage import INotificationInfoStorage
+from .storage.FileNotificationInfoStorage import FileNotificationInfoStorage
 
 from push_receiver import PushReceiver
 from push_receiver.android_fcm_register import AndroidFCM
