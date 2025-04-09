@@ -2,7 +2,7 @@ from homeassistant.components.binary_sensor import BinarySensorDeviceClass, Bina
 from homeassistant.core import callback
 from homeassistant.helpers.dispatcher import async_dispatcher_connect
 from homeassistant.helpers.entity import DeviceInfo
-from bluecon import BlueConAPI
+from .bluecon import BlueConAPI
 from homeassistant.const import CONF_API_KEY
 from homeassistant.config_entries import ConfigEntry
 

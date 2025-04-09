@@ -1,5 +1,5 @@
 import asyncio
-from bluecon import INotificationInfoStorage
+from .bluecon import INotificationInfoStorage
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.storage import Store

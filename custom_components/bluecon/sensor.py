@@ -1,6 +1,6 @@
 from homeassistant.components.sensor import SensorDeviceClass, SensorEntity
 from homeassistant.helpers.entity import DeviceInfo
-from bluecon import BlueConAPI
+from .bluecon import BlueConAPI
 
 from .const import DEVICE_MANUFACTURER, DOMAIN, HASS_BLUECON_VERSION
 

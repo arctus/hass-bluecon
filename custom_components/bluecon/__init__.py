@@ -3,6 +3,7 @@ from .const import CONF_LOCK_STATE_RESET, DOMAIN, SIGNAL_CALL_ENDED, SIGNAL_CALL
 from .ConfigFolderOAuthTokenStorage import ConfigFolderOAuthTokenStorage
 from .ConfigFolderNotificationInfoStorage import ConfigFolderNotificationInfoStorage
 from .config_flow import BlueConConfigFlow
+from .bluecon import BlueConAPI, INotification, CallNotification, CallEndNotification, IOAuthTokenStorage, INotificationInfoStorage, OAuthToken
 from homeassistant.const import (
     CONF_API_KEY,
     CONF_CLIENT_ID,
@@ -11,7 +12,6 @@ from homeassistant.const import (
     Platform
 )
 from homeassistant.helpers.dispatcher import dispatcher_send
-from bluecon import BlueConAPI, INotification, CallNotification, CallEndNotification, IOAuthTokenStorage, INotificationInfoStorage, OAuthToken
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.config_entries import ConfigEntry
 from custom_components.bluecon.const import CONF_PACKAGE_NAME, CONF_APP_ID, CONF_PROJECT_ID, CONF_SENDER_ID

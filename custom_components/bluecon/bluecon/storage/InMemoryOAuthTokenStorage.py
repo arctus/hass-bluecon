@@ -1,6 +1,5 @@
-from bluecon.oauth.OAuthToken import OAuthToken
-from bluecon.storage.IOAuthTokenStorage import IOAuthTokenStorage
-
+from ..oauth.OAuthToken import OAuthToken
+from .IOAuthTokenStorage import IOAuthTokenStorage
 
 @IOAuthTokenStorage.register
 class InMemoryOAuthTokenStorage(IOAuthTokenStorage):
