@@ -16,9 +16,11 @@ from homeassistant.core import HomeAssistant, callback
 from homeassistant.config_entries import ConfigEntry
 from custom_components.bluecon.const import CONF_PACKAGE_NAME, CONF_APP_ID, CONF_PROJECT_ID, CONF_SENDER_ID
 
-
+import logging
 
 PLATFORMS: list[str] = [Platform.BINARY_SENSOR, Platform.LOCK, Platform.CAMERA, Platform.SENSOR]
+
+_LOGGER = logging.getLogger(__name__)
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     def notification_callback(notification: INotification):
@@ -46,11 +48,12 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
     if entry.data.get(CONF_SENDER_ID, None) is not None and entry.data.get(CONF_API_KEY, None) is not None and entry.data.get(CONF_PROJECT_ID, None) is not None and entry.data.get(CONF_APP_ID, None) is not None and entry.data.get(CONF_PACKAGE_NAME, None) is not None:
         await bluecon.registerAppToken(True)
-        bluecon.startNotificationListener()
+        await bluecon.startNotificationListener()
 
         @callback
         async def cleanup(event):
             await bluecon.stopNotificationListener()
+            await bluecon.registerAppToken(False)
         
         hass.bus.async_listen_once(EVENT_HOMEASSISTANT_STOP, cleanup)
 
