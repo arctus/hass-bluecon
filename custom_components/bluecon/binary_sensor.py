@@ -2,10 +2,10 @@ from homeassistant.components.binary_sensor import BinarySensorDeviceClass, Bina
 from homeassistant.core import callback
 from homeassistant.helpers.dispatcher import async_dispatcher_connect
 from homeassistant.helpers.entity import DeviceInfo
-from .bluecon import BlueConAPI
 from homeassistant.const import CONF_API_KEY
 from homeassistant.config_entries import ConfigEntry
 
+from .bluecon import BlueConAPI
 from .const import DEVICE_MANUFACTURER, DOMAIN, HASS_BLUECON_VERSION, SIGNAL_CALL_ENDED, SIGNAL_CALL_STARTED, CONF_PACKAGE_NAME, CONF_APP_ID, CONF_PROJECT_ID, CONF_SENDER_ID
 
 STATE_CONNECTED = "Connected"

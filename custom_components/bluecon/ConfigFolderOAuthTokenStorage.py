@@ -1,9 +1,10 @@
 import asyncio
-from .bluecon import IOAuthTokenStorage, OAuthToken
+
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.storage import Store
+
+from .bluecon import IOAuthTokenStorage, OAuthToken
 from .const import DOMAIN
-from pathlib import Path
 
 class ConfigFolderOAuthTokenStorage(IOAuthTokenStorage):
     def __init__(self, hass: HomeAssistant):

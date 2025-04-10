@@ -5,9 +5,7 @@ from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.const import CONF_API_KEY
 from homeassistant.config_entries import ConfigEntry
 
-
 from .bluecon import BlueConAPI
-
 from .const import DEVICE_MANUFACTURER, DOMAIN, HASS_BLUECON_VERSION, SIGNAL_CALL_ENDED, CONF_PACKAGE_NAME, CONF_APP_ID, CONF_PROJECT_ID, CONF_SENDER_ID
 
 async def async_setup_entry(hass, entry: ConfigEntry, async_add_entities):

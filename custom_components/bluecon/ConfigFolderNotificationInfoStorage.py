@@ -1,11 +1,12 @@
 import asyncio
-from .bluecon import INotificationInfoStorage
+from typing import Any
+
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.storage import Store
-from typing import Any
-from .const import DOMAIN
 
+from .bluecon import INotificationInfoStorage
+from .const import DOMAIN
 
 class ConfigFolderNotificationInfoStorage(INotificationInfoStorage):
     def __init__(self, hass: HomeAssistant):

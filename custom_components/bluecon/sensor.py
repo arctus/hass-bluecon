@@ -1,14 +1,14 @@
 from homeassistant.components.sensor import SensorDeviceClass, SensorEntity
 from homeassistant.helpers.entity import DeviceInfo
-from .bluecon import BlueConAPI
 
+from .bluecon import BlueConAPI
 from .const import DEVICE_MANUFACTURER, DOMAIN, HASS_BLUECON_VERSION
 
 SIGNAL_TERRIBLE = "terrible"
 SIGNAL_BAD = "bad"
 SIGNAL_WEAK = "weak"
 SIGNAL_GOOD = "good"
-SIGNAL_EXCELENT = "excelent"
+SIGNAL_EXCELLENT = "excellent"
 SIGNAL_UNKNOWN = "unknown"
 
 async def async_setup_entry(hass, config, async_add_entities):
@@ -22,7 +22,7 @@ async def async_setup_entry(hass, config, async_add_entities):
         deviceInfo = await bluecon.getDeviceInfo(pairing.deviceId)
 
         sensors.append(
-            BlueConWifiStrenghtSensor(
+            BlueConWifiStrengthSensor(
                 bluecon,
                 pairing.deviceId,
                 deviceInfo
@@ -31,7 +31,7 @@ async def async_setup_entry(hass, config, async_add_entities):
     
     async_add_entities(sensors)
 
-class BlueConWifiStrenghtSensor(SensorEntity):
+class BlueConWifiStrengthSensor(SensorEntity):
     _attr_should_poll = True
 
     def __init__(self, bluecon, deviceId, deviceInfo):
@@ -39,7 +39,7 @@ class BlueConWifiStrenghtSensor(SensorEntity):
         self.deviceId = deviceId
         self._attr_unique_id = f'{self.deviceId}_connection_status'.lower()
         self.entity_id = f'{DOMAIN}.{self._attr_unique_id}'.lower()
-        self._attr_options = [SIGNAL_TERRIBLE, SIGNAL_BAD, SIGNAL_WEAK, SIGNAL_GOOD, SIGNAL_EXCELENT, SIGNAL_UNKNOWN]
+        self._attr_options = [SIGNAL_TERRIBLE, SIGNAL_BAD, SIGNAL_WEAK, SIGNAL_GOOD, SIGNAL_EXCELLENT, SIGNAL_UNKNOWN]
         self._attr_native_value = getWirelessSignalText(deviceInfo.wirelessSignal)
         self.__model = f'{deviceInfo.type} {deviceInfo.subType} {deviceInfo.family}'
         self._attr_translation_key = "wifi-state"
@@ -78,6 +78,6 @@ def getWirelessSignalText(wirelessSignal):
     elif wirelessSignal == 3:
         return SIGNAL_GOOD
     elif wirelessSignal == 4:
-        return SIGNAL_EXCELENT
+        return SIGNAL_EXCELLENT
     else:
         SIGNAL_UNKNOWN
