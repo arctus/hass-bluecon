@@ -179,14 +179,15 @@ class BlueConAPI:
                                     headers = (await self.__getOrRefreshOAuthToken()).getBearerAuthHeader()) as response:
                 return response.status == 200
     
-    def startNotificationListener(self):
+    async def startNotificationListener(self):
         """Starts the notification listener to get notifications about calls"""
+        
+        credentials = await self.__notificationInfoStorage.retrieveCredentials()
+        if credentials is None:
+            await self.registerAppToken(True)
 
         def listener_thread(blueConAPIClient: BlueConAPI):
-
             credentials = asyncio.run(blueConAPIClient.__notificationInfoStorage.retrieveCredentials())
-            asyncio.run(blueConAPIClient.registerAppToken(True))
-            
             received_persistent_ids = asyncio.run(blueConAPIClient.__notificationInfoStorage.retrievePersistentIds())
 
             if received_persistent_ids is None:
